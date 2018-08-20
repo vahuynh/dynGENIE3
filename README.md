@@ -1,5 +1,5 @@
 # dynGENIE3
-Semi-parametric approach for the inference of gene regulatory networks from time series of expression data
+Semi-parametric approach for the inference of gene regulatory networks from time series of expression data.
 
 The dynGENIE3 method is described in the following paper (available [here](https://www.nature.com/articles/s41598-018-21715-0)):
 ```
