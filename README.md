@@ -8,7 +8,7 @@ Huynh-Thu, V. A. and Geurts, P.
 Scientific Reports, 8:3384, 2018.
 ```
 
-Three implementations of dynGENIE3 are available: Python, MATLAB and R.
+Three implementations of dynGENIE3 are available: Python, MATLAB and R. Each folder contains a PDF file with a step-by-step tutorial showing how to run the code.
 
 Note: All the results presented in the paper were generated using the Python implementation.
 
