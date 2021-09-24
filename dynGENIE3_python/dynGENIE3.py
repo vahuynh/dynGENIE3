@@ -74,7 +74,7 @@ def get_link_list(VIM,gene_names=None,regulators='all',maxcount='all',file_name=
         elif len(gene_names) != ngenes:
             raise ValueError('input argument gene_names must be a list of length p, where p is the number of columns/genes in the expression data')
         
-    if regulators is not 'all':
+    if regulators != 'all':
         if not isinstance(regulators,(list,tuple)):
             raise ValueError('input argument regulators must be a list of gene names')
 
@@ -85,7 +85,7 @@ def get_link_list(VIM,gene_names=None,regulators='all',maxcount='all',file_name=
             if not sIntersection:
                 raise ValueError('The genes must contain at least one candidate regulator')
         
-    if maxcount is not 'all' and not isinstance(maxcount,int):
+    if maxcount != 'all' and not isinstance(maxcount,int):
         raise ValueError('input argument maxcount must be "all" or a positive integer')
         
     if file_name is not None and not isinstance(file_name,str):
@@ -321,7 +321,7 @@ def dynGENIE3(TS_data,time_points,alpha='from_data',SS_data=None,gene_names=None
         if len(time_points[i]) != expr_data.shape[0]:
             raise ValueError('The length of the i-th vector of time_points must be equal to the number of rows in the i-th array of TS_data')
 
-    if alpha is not 'from_data':
+    if alpha != 'from_data':
         if not isinstance(alpha,(list,tuple,ndarray,int,float)):
             raise ValueError("input argument alpha must be either 'from_data', a positive number or a vector of positive numbers")
         
@@ -354,7 +354,7 @@ def dynGENIE3(TS_data,time_points,alpha='from_data',SS_data=None,gene_names=None
         elif len(gene_names) != ngenes:
             raise ValueError('input argument gene_names must be a list of length p, where p is the number of columns/genes in the expression data')
     
-    if regulators is not 'all':
+    if regulators != 'all':
         if not isinstance(regulators,(list,tuple)):
             raise ValueError('input argument regulators must be a list of gene names')
 
@@ -365,10 +365,10 @@ def dynGENIE3(TS_data,time_points,alpha='from_data',SS_data=None,gene_names=None
             if not sIntersection:
                 raise ValueError('The genes must contain at least one candidate regulator')        
     
-    if tree_method is not 'RF' and tree_method is not 'ET':
+    if tree_method != 'RF' and tree_method != 'ET':
         raise ValueError('input argument tree_method must be "RF" (Random Forests) or "ET" (Extra-Trees)')
     
-    if K is not 'sqrt' and K is not 'all' and not isinstance(K,int): 
+    if K != 'sqrt' and K != 'all' and not isinstance(K,int): 
         raise ValueError('input argument K must be "sqrt", "all" or a stricly positive integer')
     
     if isinstance(K,int) and K <= 0:
@@ -401,7 +401,7 @@ def dynGENIE3(TS_data,time_points,alpha='from_data',SS_data=None,gene_names=None
         expr_data = TS_data[i]
         TS_data[i] = expr_data[indices,:]
         
-    if alpha is 'from_data':
+    if alpha == 'from_data':
         alphas = estimate_degradation_rates(TS_data,time_points)
     elif isinstance(alpha,(int,float)):
         alphas = zeros(ngenes) + float(alpha)    
@@ -741,7 +741,7 @@ def dynGENIE3_predict_doubleKO(expr_WT,treeEstimators,alpha,gene_names,regulator
     elif len(gene_names) != ngenes:
         raise ValueError('input argument gene_names must be a list of length p, where p is the number of genes in expr_WT')
 
-    if regulators is not 'all':
+    if regulators != 'all':
         if not isinstance(regulators,(list,tuple)):
             raise ValueError('input argument regulators must be a list of gene names')
 
