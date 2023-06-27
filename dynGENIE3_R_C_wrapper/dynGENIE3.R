@@ -452,8 +452,9 @@ get.link.list <- function(weight.matrix, report.max=NULL, threshold=0) {
 	
 	library(reshape2)
 	
-	# Only process weights off-diagonal
-	diag(weight.matrix) <- NA
+	# Only process weights that are not self-regulations
+	input.genes <- rownames(weight.matrix)
+	diag(weight.matrix[input.genes, input.genes]) <- NA
     link.list <- melt(weight.matrix, na.rm=TRUE)
     colnames(link.list) <- c("regulatory.gene", "target.gene", "weight")
     link.list <- link.list[link.list$weight>=threshold,]
