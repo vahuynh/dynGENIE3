@@ -569,17 +569,20 @@ estimate.decay.rates <- function(TS.data, time.points) {
 			
 			xmin <- current.timeseries[idx.min,target.gene.name]
 			xmax <- current.timeseries[idx.max,target.gene.name]
+
+			if (xmin != xmax) {
 			
-			tmin <- current.time.points[idx.min]
-			tmax <- current.time.points[idx.max]
-			
-            xmin <- max(xmin-C_min,1e-6)
-            xmax <- max(xmax-C_min,1e-6)
-			
-            xmin <- log(xmin)
-            xmax <- log(xmax)
-			
-			alphas[k,target.gene.name] = (xmax - xmin) / abs(tmin - tmax)		
+                tmin <- current.time.points[idx.min]
+                tmax <- current.time.points[idx.max]
+
+                xmin <- max(xmin-C_min,1e-6)
+                xmax <- max(xmax-C_min,1e-6)
+
+                xmin <- log(xmin)
+                xmax <- log(xmax)
+
+                alphas[k,target.gene.name] = (xmax - xmin) / abs(tmin - tmax)
+                }
 		}
 	}	
 	

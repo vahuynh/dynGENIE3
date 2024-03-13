@@ -193,17 +193,19 @@ def estimate_degradation_rates(TS_data,time_points):
             
             xmin = current_timeseries[idx_min,j]
             xmax = current_timeseries[idx_max,j]
+
+            if xmin != xmax:
             
-            tmin = current_time_points[idx_min]
-            tmax = current_time_points[idx_max]
-            
-            xmin = max(xmin-C_min,1e-6)
-            xmax = max(xmax-C_min,1e-6)
-                
-            xmin = log(xmin)
-            xmax = log(xmax)
-            
-            alphas[i,j] = (xmax - xmin) / abs(tmin - tmax)
+                tmin = current_time_points[idx_min]
+                tmax = current_time_points[idx_max]
+
+                xmin = max(xmin-C_min,1e-6)
+                xmax = max(xmax-C_min,1e-6)
+
+                xmin = log(xmin)
+                xmax = log(xmax)
+
+                alphas[i,j] = (xmax - xmin) / abs(tmin - tmax)
                 
     alphas = alphas.max(axis=0)
  
